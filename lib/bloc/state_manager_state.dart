@@ -18,7 +18,7 @@ class SMSGoToListPage extends StateManagerState{
 class SMSGoToInputPage extends StateManagerState{}
 
 class SMSUpdateWords extends StateManagerState{
-  final List<String>? newWords;
+  final List<RankDataModel>? newWords;
 
   SMSUpdateWords(this.newWords);
 

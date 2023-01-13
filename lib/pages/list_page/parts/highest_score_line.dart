@@ -8,12 +8,9 @@ class HighestScoreLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Row(
-      children: [
-        const Text( "Highest Score:" ),
-        const SizedBox( width: 10 ),
-        Text( "$highestPoint" ),
-      ],
+    return SizedBox(
+      width: 400,
+      child: Text( "Highest Score:   $highestPoint" ),
     );
   }
 }

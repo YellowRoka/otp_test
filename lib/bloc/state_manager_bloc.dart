@@ -11,37 +11,53 @@ part 'state_manager_state.dart';
 //@injectable it is need for this project?
 class StateManagerBloc extends Bloc< StateManagerEvent, StateManagerState > {
 
-  List<String>         tmpMemory = [];
-  List<RankDataModel>? rankList  = [];
+  List< RankDataModel > tmpMemory = [];
+  List< RankDataModel > rankList  = [];
 
   StateManagerBloc() : super( StateManagerInitial() ){
-    on < SMInit           >( _initHandler  );
-    on < SMEGoToListPage  >( _goToListPage );
-    on < SMEGoToInputPage >( _goToMainPage );
-    on < SMEAddedNewWord  >( _addNewWord   );
+    on< SMInit           >( _initHandler  );
+    on< SMEGoToListPage  >( _goToListPage );
+    on< SMEGoToInputPage >( _goToMainPage );
+    on< SMEAddedNewWord  >( _addNewWord   );
   }
 
-  FutureOr<void>_initHandler( SMInit event, Emitter< StateManagerState > emit ){
+  FutureOr< void > _initHandler( SMInit event, Emitter< StateManagerState > emit ){
     emit( StateManagerInit() );
   }
 
-  FutureOr<void>_goToListPage( SMEGoToListPage event, Emitter< StateManagerState > emit ){
-    
-    if( tmpMemory.isNotEmpty ){
-      rankList = [];
-      tmpMemory.forEach((element) => rankList!.add( RankDataModel( element, element.length ) ) );
-    }
-    
+  FutureOr< void > _goToListPage( SMEGoToListPage event, Emitter< StateManagerState > emit ){
     emit( SMSGoToListPage( rankList ) );
   }
 
-  FutureOr<void>_goToMainPage( SMEGoToInputPage event, Emitter<StateManagerState> emit ){
+  FutureOr< void > _goToMainPage( SMEGoToInputPage event, Emitter<StateManagerState> emit ){
     emit( SMSGoToInputPage() );
   }
 
-  FutureOr<void>_addNewWord( SMEAddedNewWord event, Emitter<StateManagerState> emit ){
-    tmpMemory.add(event.newWord);
+  FutureOr< void > _addNewWord( SMEAddedNewWord event, Emitter<StateManagerState> emit ){
+    final String newWord = event.newWord.toLowerCase();
+    int count = 0;
+    rankList.forEach(
+      ( element ){
+        if( element.word == newWord ){
+          count++;
+        }
+      }
+    );
+    
+    final RankDataModel countedNewWord = RankDataModel( newWord, newWord.length, count: count );
+
+    
+    rankList.add( countedNewWord );
+    rankList.sort( (a, b) => b.point.compareTo(a.point) );
+
+    tmpMemory.insert( 0, countedNewWord );
     emit( SMSUpdateWords( tmpMemory ) );
   }
   
+
+ @override
+  void onEvent( StateManagerEvent event ){
+    super.onEvent(event);
+    print( "event: ${event.toString()}" );
+  }
 }

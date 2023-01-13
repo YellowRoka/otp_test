@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_test/bloc/state_manager_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../../data/rank_data_model.dart';
 import 'parts/feeback_line.dart';
 import 'parts/fob.dart';
 import 'parts/input_button.dart';
@@ -11,7 +12,7 @@ import 'parts/input_field.dart';
 class InputPage extends StatelessWidget {
   const InputPage({super.key});
 
-  static List<String>? latestWords = [];
+  static List<RankDataModel>? latestWords = [];
 
   @override
   Widget build( BuildContext context ){
