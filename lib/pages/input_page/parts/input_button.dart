@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:otp_test/bloc/state_manager_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class InputButton extends StatelessWidget {
   const InputButton({super.key});
@@ -11,7 +12,12 @@ class InputButton extends StatelessWidget {
       height: 50,
       child:  ElevatedButton(
         child: const Text('Enter'),
-        onPressed: () => context.read< StateManagerBloc >().add( SMEAddedNewWord("TEST") ),
+        onPressed: () {
+          var form = FormBuilder.of(context)!;
+          if( form.saveAndValidate() ){
+            context.read< StateManagerBloc >().add( SMEAddedNewWord( form.value['input_text_field'] as String ) );
+          }
+        }
       ),
     );
   }

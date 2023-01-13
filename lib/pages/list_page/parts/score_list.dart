@@ -30,13 +30,18 @@ class ScoreList extends StatelessWidget {
     );
   }
 
-  Widget buildLine( RankDataModel data ) => Row(
-    mainAxisAlignment:  MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.center,
+  Widget buildLine( RankDataModel data ) => Column(
     children: [
-      Text( "${data.point}" ),
-      const SizedBox( width: 50 ),
-      Text( data.word, overflow: TextOverflow.fade ),
+      Row(
+        mainAxisAlignment:  MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text( "${data.point}" ),
+          const SizedBox( width: 50 ),
+          SizedBox(width: 305, child: Text( data.word, overflow: TextOverflow.fade )),
+        ],
+      ),
+      const SizedBox(height: 10 )
     ],
   );
 
