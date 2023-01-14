@@ -6,20 +6,20 @@ void main() {
 
   blocTest( "1 StateManager test - init state",
     build:  ()     => StateManagerBloc(),
-    act:    (bloc) => bloc.add( SMInit() ),
+    act:    (bloc) => bloc.add( const SMInit() ),
     expect: ()     => [ isA<StateManagerInit>() ]
     
   );
 
   blocTest( "2 StateManager test - go to input page",
     build:  ()     => StateManagerBloc(),
-    act:    (bloc) => bloc.add( SMEGoToInputPage() ),
+    act:    (bloc) => bloc.add( const SMEGoToInputPage() ),
     expect: ()     => [ isA<SMSGoToInputPage>() ]
   );
   
   blocTest( "3 StateManager test - add new word",
     build:  ()     => StateManagerBloc(),
-    act:    (bloc) => bloc.add( SMEAddedNewWord("word") ),
+    act:    (bloc) => bloc.add( const SMEAddedNewWord("word") ),
     expect: ()     => [ isA<SMSUpdateWords>() ],
     verify: (bloc){
       expect( (bloc.state as SMSUpdateWords).newWords![0].count, 0 );
@@ -30,7 +30,7 @@ void main() {
 
   blocTest( "4 StateManager test - added new word converting to lower case",
     build:  ()     => StateManagerBloc(),
-    act:    (bloc) => bloc.add( SMEAddedNewWord("WORD") ),
+    act:    (bloc) => bloc.add( const SMEAddedNewWord("WORD") ),
     expect: ()     => [ isA<SMSUpdateWords>() ],
     verify: (bloc){
       expect( (bloc.state as SMSUpdateWords).newWords![0].word, "word" );
@@ -41,8 +41,8 @@ void main() {
     build: () => StateManagerBloc(),
 
     act: ( bloc ){
-      bloc.add( SMEAddedNewWord("and") );
-      bloc.add( SMEAddedNewWord("word") );
+      bloc.add( const SMEAddedNewWord("and") );
+      bloc.add( const SMEAddedNewWord("word") );
     },
     
     expect: () => [
@@ -65,9 +65,9 @@ void main() {
     build: () => StateManagerBloc(),
     
     act: ( bloc ){
-      bloc.add( SMEAddedNewWord("and")  );
-      bloc.add( SMEAddedNewWord("word") );
-      bloc.add( SMEAddedNewWord("word") );
+      bloc.add( const SMEAddedNewWord("and")  );
+      bloc.add( const SMEAddedNewWord("word") );
+      bloc.add( const SMEAddedNewWord("word") );
     },
     
     expect: () => [ 
@@ -95,10 +95,10 @@ void main() {
     build: () => StateManagerBloc(),
     
     act: ( bloc ){
-      bloc.add( SMEAddedNewWord("and")  );
-      bloc.add( SMEAddedNewWord("word") );
-      bloc.add( SMEAddedNewWord("word") );
-      bloc.add( SMEGoToListPage()       );
+      bloc.add( const SMEAddedNewWord("and")  );
+      bloc.add( const SMEAddedNewWord("word") );
+      bloc.add( const SMEAddedNewWord("word") );
+      bloc.add( const SMEGoToListPage()       );
     },
     
     expect: () => [ 

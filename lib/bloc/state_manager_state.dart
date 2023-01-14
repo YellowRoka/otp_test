@@ -1,26 +1,30 @@
 part of 'state_manager_bloc.dart';
 
 @immutable
-abstract class StateManagerState {}
+abstract class StateManagerState {
+  const StateManagerState();
+}
 
-class StateManagerInitial extends StateManagerState {}
+class StateManagerInitial extends StateManagerState {
+  const StateManagerInitial();
+}
 
-class StateManagerInit extends StateManagerState {}
+class StateManagerInit extends StateManagerState {
+  const StateManagerInit();
+}
 
 class SMSGoToListPage extends StateManagerState{
   final List<RankDataModel>? rankList;
 
-  SMSGoToListPage(this.rankList);
-
-  List<Object> get props => [ rankList! ];
+  const SMSGoToListPage(this.rankList);
 }
 
-class SMSGoToInputPage extends StateManagerState{}
+class SMSGoToInputPage extends StateManagerState{
+  const SMSGoToInputPage();
+}
 
 class SMSUpdateWords extends StateManagerState{
   final List<RankDataModel>? newWords;
 
-  SMSUpdateWords(this.newWords);
-
-  List<Object> get props => [ newWords! ];
+  const SMSUpdateWords(this.newWords);
 }

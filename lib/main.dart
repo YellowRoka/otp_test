@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return 
       BlocProvider(
-        create: ( BuildContext context ) => StateManagerBloc()..add( SMEGoToInputPage() ),
+        create: ( BuildContext context ) => StateManagerBloc()..add( const SMEGoToInputPage() ),
         child:  MaterialApp(
           debugShowCheckedModeBanner: false,
           

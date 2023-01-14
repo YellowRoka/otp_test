@@ -8,7 +8,8 @@ class InputField extends StatelessWidget {
   static const int maxSize = "pneumonoultramicroscopicsilicovolcanoconiosis".length;
 
   static final validator = MultiValidator(
-    [ RealEngWordValidator(),
+    [ 
+      RealEngWordValidator(),
       NullValidator( errorText:                    'A word is required'                                                              ),  
       MinLengthValidator( 1, errorText:            'The word must be at least 1 letter long'                                         ),  
       MaxLengthValidator( maxSize, errorText:      'The word colud not longer than:\n pneumonoultramicroscopicsilicovolcanoconiosis' ),  
@@ -32,9 +33,9 @@ class InputField extends StatelessWidget {
   }
 }
 
-/**
+/*
 ** INFO: the original isRequred validator not running at this version, therfore must defined a class for it.
-**/
+*/
 
 class NullValidator extends TextFieldValidator {  
   NullValidator( { String errorText = 'Enter a data' } ) : super( errorText );  

@@ -1,18 +1,24 @@
 part of 'state_manager_bloc.dart';
 
 @immutable
-abstract class StateManagerEvent {}
+abstract class StateManagerEvent {
+  const StateManagerEvent();
+}
 
-class SMInit extends StateManagerEvent{}
+class SMInit extends StateManagerEvent{
+  const SMInit();
+}
 
-class SMEGoToListPage extends StateManagerEvent{}
+class SMEGoToListPage extends StateManagerEvent{
+  const SMEGoToListPage();
+}
 
-class SMEGoToInputPage extends StateManagerEvent{}
+class SMEGoToInputPage extends StateManagerEvent{
+  const SMEGoToInputPage();
+}
 
 class SMEAddedNewWord extends StateManagerEvent{
   final String newWord;
 
-  SMEAddedNewWord(this.newWord);
-  
-  List<Object> get props => [ newWord ];
+  const SMEAddedNewWord(this.newWord);
 }

@@ -14,7 +14,7 @@ class StateManagerBloc extends Bloc< StateManagerEvent, StateManagerState > {
   List< RankDataModel > tmpMemory = [];
   List< RankDataModel > rankList  = [];
 
-  StateManagerBloc() : super( StateManagerInitial() ){
+  StateManagerBloc() : super( const StateManagerInitial() ){
     on< SMInit           >( _initStateHandler  );
     on< SMEGoToListPage  >( _goToListPage      );
     on< SMEGoToInputPage >( _goToMainPage      );
@@ -22,7 +22,7 @@ class StateManagerBloc extends Bloc< StateManagerEvent, StateManagerState > {
   }
 
   FutureOr< void > _initStateHandler( SMInit event, Emitter< StateManagerState > emit ){
-    emit( StateManagerInit() );
+    emit( const StateManagerInit() );
   }
 
   FutureOr< void > _goToListPage( SMEGoToListPage event, Emitter< StateManagerState > emit ){
@@ -30,7 +30,7 @@ class StateManagerBloc extends Bloc< StateManagerEvent, StateManagerState > {
   }
 
   FutureOr< void > _goToMainPage( SMEGoToInputPage event, Emitter<StateManagerState> emit ){
-    emit( SMSGoToInputPage() );
+    emit( const SMSGoToInputPage() );
   }
 
   FutureOr< void > _addNewWord( SMEAddedNewWord event, Emitter<StateManagerState> emit ){
