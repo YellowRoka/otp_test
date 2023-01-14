@@ -34,7 +34,6 @@ class InputField extends StatelessWidget {
 
 /**
 ** INFO: the original isRequred validator not running at this version, therfore must defined a class for it.
-** This class is out of unit testing scope becuse it is just temporary until the package is not fixed.
 **/
 
 class NullValidator extends TextFieldValidator {  

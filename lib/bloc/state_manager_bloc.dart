@@ -15,13 +15,13 @@ class StateManagerBloc extends Bloc< StateManagerEvent, StateManagerState > {
   List< RankDataModel > rankList  = [];
 
   StateManagerBloc() : super( StateManagerInitial() ){
-    on< SMInit           >( _initHandler  );
-    on< SMEGoToListPage  >( _goToListPage );
-    on< SMEGoToInputPage >( _goToMainPage );
-    on< SMEAddedNewWord  >( _addNewWord   );
+    on< SMInit           >( _initStateHandler  );
+    on< SMEGoToListPage  >( _goToListPage      );
+    on< SMEGoToInputPage >( _goToMainPage      );
+    on< SMEAddedNewWord  >( _addNewWord        );
   }
 
-  FutureOr< void > _initHandler( SMInit event, Emitter< StateManagerState > emit ){
+  FutureOr< void > _initStateHandler( SMInit event, Emitter< StateManagerState > emit ){
     emit( StateManagerInit() );
   }
 

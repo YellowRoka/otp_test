@@ -6,7 +6,7 @@ import 'route_handler/route_handler.dart';
 import 'route_handler/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp() );
 }
 
 class MyApp extends StatelessWidget {
