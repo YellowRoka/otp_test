@@ -8,7 +8,7 @@ class FOB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => context.read<StateManagerBloc>().add( SMEGoToListPage() ),
+      onPressed: () => context.read<StateManagerBloc>().add( const SMEGoToListPage() ),
       child:     const Icon( Icons.list_rounded )
     );
   }
