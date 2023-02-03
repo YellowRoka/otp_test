@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_test/bloc/state_manager_bloc.dart';
+import 'package:otp_test/commons/constans.dart';
 
 import 'route_handler/route_handler.dart';
 import 'route_handler/routes.dart';
@@ -21,13 +22,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           
           onGenerateRoute: ( settings ){
-            if( settings.name?.startsWith( "/input_page" ) ?? false ){ return animatedRouteToInputPage( settings ); }
-            if( settings.name?.startsWith( "/list_page" )  ?? false ){ return animatedRouteToListPage( settings, settings.arguments );  }
+            if( settings.name?.startsWith( constRouteInitPage ) ?? false ){ return animatedRouteToInputPage( settings ); }
+            if( settings.name?.startsWith( constRouteListPage )  ?? false ){ return animatedRouteToListPage( settings, settings.arguments );  }
 
             return null;
           },
 
-          title: 'OTP words test',
+          title: constTitle,
           theme: ThemeData( primarySwatch: Colors.green ),
           home:  const Scaffold( body: RouteHandler() )
       ),

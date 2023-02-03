@@ -5,8 +5,8 @@ abstract class StateManagerEvent {
   const StateManagerEvent();
 }
 
-class SMInit extends StateManagerEvent{
-  const SMInit();
+class SMEInit extends StateManagerEvent{
+  const SMEInit();
 }
 
 class SMEGoToListPage extends StateManagerEvent{

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -252,12 +253,16 @@ Future<void> createGoldenFile( IntegrationTestWidgetsFlutterBinding binding, Str
   if(Platform.isAndroid) {
     await binding.takeScreenshot(name);
     await expectLater( find.byType(MaterialApp), matchesGoldenFile('golden_shots/$name.png'));
-    print("created golden file: $name.png - droid");
+    if( kDebugMode ){
+      print("created golden file: $name.png - droid");
+    }
   }
 
   if(Platform.isWindows) {
     await expectLater( find.byType(MaterialApp), matchesGoldenFile('golden_files/$name.png'));
-    print("created golden file: $name.png - windows");
+    if( kDebugMode ){
+      print("created golden file: $name.png - windows");
+    }
   }
 
 }
@@ -270,8 +275,8 @@ extension SetScreenSize on WidgetTester {
   }) 
   async {
     final size = Size(width, height);
-    await this.binding.setSurfaceSize(size);
-    this.binding.window.physicalSizeTestValue = size;
-    this.binding.window.devicePixelRatioTestValue = pixelDensity;
+    await binding.setSurfaceSize(size);
+    binding.window.physicalSizeTestValue = size;
+    binding.window.devicePixelRatioTestValue = pixelDensity;
   }
 }

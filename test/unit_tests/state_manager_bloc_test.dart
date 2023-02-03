@@ -6,8 +6,8 @@ void main() {
 
   blocTest( "1 StateManager test - init state",
     build:  ()     => StateManagerBloc(),
-    act:    (bloc) => bloc.add( const SMInit() ),
-    expect: ()     => [ isA<StateManagerInit>() ]
+    act:    (bloc) => bloc.add( const SMEInit() ),
+    expect: ()     => [ isA<SMSInit>() ]
     
   );
 

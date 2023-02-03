@@ -5,12 +5,12 @@ abstract class StateManagerState {
   const StateManagerState();
 }
 
-class StateManagerInitial extends StateManagerState {
-  const StateManagerInitial();
+class SMSInitial extends StateManagerState {
+  const SMSInitial();
 }
 
-class StateManagerInit extends StateManagerState {
-  const StateManagerInit();
+class SMSInit extends StateManagerState {
+  const SMSInit();
 }
 
 class SMSGoToListPage extends StateManagerState{
@@ -20,7 +20,9 @@ class SMSGoToListPage extends StateManagerState{
 }
 
 class SMSGoToInputPage extends StateManagerState{
-  const SMSGoToInputPage();
+  final List<RankDataModel>? rankedList;
+  
+  const SMSGoToInputPage(this.rankedList);
 }
 
 class SMSUpdateWords extends StateManagerState{

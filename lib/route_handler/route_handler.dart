@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_test/bloc/state_manager_bloc.dart';
+import 'package:otp_test/commons/constans.dart';
+import 'package:otp_test/data/rank_data_model.dart';
 
-import '../data/rank_data_model.dart';
 
 class RouteHandler extends StatelessWidget {
   const RouteHandler({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build( BuildContext context ){
     return BlocListener<StateManagerBloc, StateManagerState>(
-      listener: (context, state) {
+      listener: ( context, state ){
         if( state is SMSGoToInputPage ){ _dinamicRouteToInputPage( context ); }
         if( state is SMSGoToListPage  ){ _dinamicRouteToIListPage( context, state.rankList ); }
       },
@@ -18,7 +19,6 @@ class RouteHandler extends StatelessWidget {
     );
   }
 
-  void _dinamicRouteToInputPage( BuildContext context ) => Navigator.pushNamed( context, "/input_page" );
-  void _dinamicRouteToIListPage( BuildContext context, List<RankDataModel>? rankList ) => Navigator.pushNamed( context, "/list_page", arguments: rankList );
-
+  void _dinamicRouteToInputPage( BuildContext context ) => Navigator.pushNamed( context, constRouteInitPage );
+  void _dinamicRouteToIListPage( BuildContext context, List<RankDataModel>? rankList ) => Navigator.pushNamed( context, constRouteListPage, arguments: rankList );
 }

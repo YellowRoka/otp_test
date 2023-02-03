@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otp_test/commons/constans.dart';
 
 class HighestScoreLine extends StatelessWidget {
   final int highestPoint;
@@ -10,7 +11,7 @@ class HighestScoreLine extends StatelessWidget {
     
     return SizedBox(
       width: 400,
-      child: Text( "Highest Score:   $highestPoint" ),
+      child: Text( "$constHighScore   $highestPoint" ),
     );
   }
 }

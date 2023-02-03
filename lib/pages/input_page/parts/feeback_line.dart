@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:otp_test/data/rank_data_model.dart';
 
-import '../../../data/rank_data_model.dart';
 
 class FeedbackLine extends StatelessWidget {
   final List<RankDataModel>? latestWords;

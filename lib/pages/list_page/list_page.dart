@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/rank_data_model.dart';
-import 'parts/fob.dart';
+import 'parts/fab.dart';
 import 'parts/highest_score_line.dart';
 import 'parts/score_list.dart';
 
@@ -13,7 +13,7 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const FOB(),
+      floatingActionButton: const FAB(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all( 20.0 ),

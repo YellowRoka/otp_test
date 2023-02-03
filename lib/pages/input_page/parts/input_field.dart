@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:isitaword/isitaword.dart';
+import 'package:otp_test/commons/constans.dart';
 
 class InputField extends StatelessWidget {
 
-  static const int maxSize = "pneumonoultramicroscopicsilicovolcanoconiosis".length;
+  static const int maxSize = constMaxLenghtWord.length;
 
   static final validator = MultiValidator(
     [ 
-      NullValidator( errorText:                    'A word is required'                                                              ),  
-      PatternValidator( r'^[a-zA-Z]+$', errorText: 'Only allow letters from the english alphabet'                                    ),  
+      NullValidator( errorText: constErrNullValidator ),  
+      PatternValidator( constErrPattern, errorText: constErrpatternValidator ),  
       RealEngWordValidator(),
-      MinLengthValidator( 1, errorText:            'The word must be at least 1 letter long'                                         ),  
-      MaxLengthValidator( maxSize, errorText:      'The word could not longer than:\n pneumonoultramicroscopicsilicovolcanoconiosis' ),  
+      MinLengthValidator( 1, errorText:       constErrminLenght ),  
+      MaxLengthValidator( maxSize, errorText: constErrmaxLenght ),  
     ]
   ); 
 
@@ -22,11 +23,11 @@ class InputField extends StatelessWidget {
   @override
   Widget build( BuildContext context ){
     return FormBuilderTextField(
-      name:       'input_text_field',
+      name:       constFormbuilderTextName,
       validator:  validator,
       decoration: const InputDecoration(
-      hintText:   "Type a new english word",
-      labelText:  'Input new word',
+      hintText:   consthintText,
+      labelText:  constLabelText,
       border:     OutlineInputBorder(),
       ),
     );
@@ -37,19 +38,19 @@ class InputField extends StatelessWidget {
 ** INFO: the original isRequred validator not running at this version, therfore must defined a class for it.
 */
 class NullValidator extends TextFieldValidator {  
-  NullValidator( { String errorText = 'Enter a data' } ) : super( errorText );  
+  NullValidator( { String errorText = constDefaultErrorText } ) : super( errorText );  
   
   @override  
-   bool get ignoreEmptyValues => false;  
-    
-	  @override  
-	  bool isValid( String? value ) {  
-	    return ( value != null )?( true ):( false ); 
-	  }  
+  bool get ignoreEmptyValues => false;  
+  
+  @override  
+  bool isValid( String? value ) {  
+    return ( value != null )?( true ):( false ); 
+  }  
 } 
 
 class RealEngWordValidator extends TextFieldValidator {  
-  RealEngWordValidator( { String errorText = 'Enter a real english word' } ) : super( errorText );  
+  RealEngWordValidator( { String errorText = constErrRealworld } ) : super( errorText );  
   
   @override  
   bool get ignoreEmptyValues => true;  
