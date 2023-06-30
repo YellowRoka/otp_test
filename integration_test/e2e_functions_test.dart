@@ -12,7 +12,11 @@ import 'package:otp_test/pages/input_page/parts/input_button.dart';
 import 'package:otp_test/pages/input_page/parts/input_field.dart';
 import 'package:otp_test/pages/list_page/parts/highest_score_line.dart';
 
+//commands:
+//for covering tests:
 //flutter test --coverage
+//
+//for integration test:
 //flutter test -d windows --update-goldens integration_test/e2e_functions_test.dart 
 void main() {
 
@@ -39,7 +43,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
         
         final Finder enterButton = find.byType( InputButton );
         
@@ -62,7 +66,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
 
         final Finder inputText = find.byType( InputField );
         await tester.enterText(inputText,"cetli");
@@ -89,7 +93,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
 
         final Finder inputText = find.byType( InputField );
         await tester.enterText( inputText, "áá" );
@@ -118,7 +122,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
         expect( find.byType( FeedbackLine ), findsOneWidget );
 
         final Finder inputText = find.byType( InputField );
@@ -147,7 +151,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
         expect( find.byType( FeedbackLine ), findsOneWidget );
 
         final Finder inputText   = find.byType( InputField );
@@ -180,7 +184,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
         expect( find.byType( FeedbackLine ), findsOneWidget );
 
         final Finder inputText   = find.byType( InputField );
@@ -221,7 +225,7 @@ void main() {
         await waitForAction( tester );
 
         expect( find.text("Enter"), findsOneWidget );
-        expect( find.text("Input new word"), findsOneWidget );
+        expect( find.text("Enter a data"), findsOneWidget );
         expect( find.byType( FeedbackLine ), findsOneWidget );
 
         final Finder fabOnInput = find.byIcon( Icons.list_rounded );
@@ -276,6 +280,7 @@ extension SetScreenSize on WidgetTester {
   async {
     final size = Size(width, height);
     await binding.setSurfaceSize(size);
+    //TODO: Deprecated but must have, so it must replace to an equivalent result
     binding.window.physicalSizeTestValue = size;
     binding.window.devicePixelRatioTestValue = pixelDensity;
   }
